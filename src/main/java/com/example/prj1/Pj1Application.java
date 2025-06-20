@@ -1,4 +1,4 @@
-package com.example.pj1;
+package com.example.prj1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

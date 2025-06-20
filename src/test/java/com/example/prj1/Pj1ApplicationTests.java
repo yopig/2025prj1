@@ -1,4 +1,4 @@
-package com.example.pj1;
+package com.example.prj1;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
