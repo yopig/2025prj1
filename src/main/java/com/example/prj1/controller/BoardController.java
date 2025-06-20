@@ -5,13 +5,17 @@ import com.example.prj1.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("board")
-public class board {
-
+public class BoardController {
 
     private final BoardService boardService;
 
@@ -37,8 +41,22 @@ public class board {
 
         var result = boardService.list(page);
 
-        model.addAttribute("boardList", result);
+//        model.addAttribute("boardList", result);
+        model.addAllAttributes(result);
 
         return "board/list";
+    }
+
+    @GetMapping("view")
+    public String view(Integer id, Model model) {
+
+        // service에게 일 시키고
+        var dto = boardService.get(id);
+
+        // model에 넣고
+        model.addAttribute("board", dto);
+
+        // view로 forward
+        return "board/view";
     }
 }
